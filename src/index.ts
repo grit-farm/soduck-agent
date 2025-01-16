@@ -22,6 +22,7 @@ import {
   parseArguments,
 } from "./config/index.ts";
 import { initializeDatabase } from "./database/index.ts";
+import { generateStoryAction } from "./custom_actions/generateStoryAction.ts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -56,7 +57,7 @@ export function createAgent(
     character,
     plugins: [bootstrapPlugin, nodePlugin].filter(Boolean),
     providers: [],
-    actions: [],
+    actions: [generateStoryAction],
     services: [],
     managers: [],
     cacheManager: cache,
